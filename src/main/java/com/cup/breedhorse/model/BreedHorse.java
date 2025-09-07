@@ -2,15 +2,21 @@ package com.cup.breedhorse.model;
 
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
+import jakarta.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +39,14 @@ public class BreedHorse {
 
     @Lob
     private String history;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(
+        name = "breed_characteristics",
+        joinColumns = @JoinColumn(name = "breed_id"),
+        inverseJoinColumns = @JoinColumn(name = "characteristic_id")
+    )
+    private Set<Characteristic> characteristics = new HashSet<>();
 
     private String originCountry;
     private Boolean active = true;
