@@ -1,5 +1,6 @@
 package com.cup.breedhorse.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,9 +19,10 @@ public class BreedHorse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
+    // @Size(min = 2, max = 100)
     private String name;
 
+    // @Size(min = 2, max = 100)
     private String breed;
 
     private int age;
