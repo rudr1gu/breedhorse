@@ -37,6 +37,9 @@ public class BreedHorse {
     @Column(length = 1000)
     private String shortDescription;
 
+    private String averageHeight;
+    private String averageWeight;
+
     @Lob
     private String history;
 
