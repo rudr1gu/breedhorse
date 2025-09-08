@@ -10,9 +10,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity
@@ -29,6 +35,7 @@ public class Characteristic {
     @Column(length = 500)
     private String description;
 
+    @Builder.Default
     @ManyToMany(mappedBy = "characteristics")
     private Set<BreedHorse> breed = new HashSet<>();
 }

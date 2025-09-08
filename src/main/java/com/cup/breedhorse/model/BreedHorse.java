@@ -17,9 +17,15 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.JoinColumn;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @Entity
@@ -43,6 +49,7 @@ public class BreedHorse {
     @Lob
     private String history;
 
+    @Builder.Default
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
         name = "breed_characteristics",
@@ -52,9 +59,11 @@ public class BreedHorse {
     private Set<Characteristic> characteristics = new HashSet<>();
 
     private String originCountry;
+    @Builder.Default
     private Boolean active = true;
 
     @Column(updatable = false)
+    @Builder.Default
     private Instant createdAt = Instant.now();
 
     private Instant updatedAt;
