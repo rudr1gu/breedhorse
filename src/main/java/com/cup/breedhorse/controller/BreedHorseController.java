@@ -22,7 +22,7 @@ public class BreedHorseController {
     private BreedHorseService breedHorseService;
 
     @GetMapping
-    public ResponseEntity<Page<BreedHorseResponse>> getAllBreedHorses(
+    public ResponseEntity<Page<BreedHorseResponse>> list(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) String q,
