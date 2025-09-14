@@ -16,6 +16,7 @@ import com.cup.breedhorse.service.BreedHorseService;
 
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,6 +60,12 @@ public class BreedHorseController {
     public ResponseEntity<BreedHorseResponse> update(@PathVariable Long id, @Valid @RequestBody BreedHorseResponse request) {
         BreedHorseResponse updated = breedHorseService.update(id, request);
         return ResponseEntity.ok(updated);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        breedHorseService.delete(id);
+        return ResponseEntity.noContent().build();
     }
     
 }
