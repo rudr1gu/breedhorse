@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cup.breedhorse.dto.BreedHorseResponse;
-import com.cup.breedhorse.dto.PhotoResponse;
 import com.cup.breedhorse.mapper.BreedHorseMapper;
 import com.cup.breedhorse.model.BreedHorse;
 import com.cup.breedhorse.model.Characteristic;

@@ -2,10 +2,13 @@ package com.cup.breedhorse.mapper;
 
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Component;
+
 import com.cup.breedhorse.dto.BreedHorseResponse;
 import com.cup.breedhorse.model.BreedHorse;
 import com.cup.breedhorse.model.Characteristic;
 
+@Component
 public class BreedHorseMapper {
 
     public BreedHorseResponse toDto(BreedHorse breedHorse) {
