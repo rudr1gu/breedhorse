@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @RestController
@@ -50,6 +53,12 @@ public class BreedHorseController {
                 .buildAndExpand(created.id())
                 .toUri();
         return ResponseEntity.created(uri).body(created);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BreedHorseResponse> update(@PathVariable Long id, @Valid @RequestBody BreedHorseResponse request) {
+        BreedHorseResponse updated = breedHorseService.update(id, request);
+        return ResponseEntity.ok(updated);
     }
     
 }
